@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antonio Marques — Dev</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+    <style>
+    html {
+      transition:
+        background-color 0.35s ease,
+        color 0.35s ease;
+    }
+
+    :root {
+      --custom-accent: #00bfff;    }
+
+    #custom-fab {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--accent, #00bfff);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9998;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.35s ease;
+    }
+    #custom-fab:hover {
+      transform: scale(1.08) rotate(18deg);
+      box-shadow: 0 6px 28px rgba(0, 0, 0, 0.4);
+    }
+    #custom-fab svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: #fff;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.4s ease;
+    }
+    #custom-fab.open svg {
+      transform: rotate(90deg);
+    }
+
+    #custom-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 9998;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    #custom-overlay.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    #custom-panel {
+      position: fixed;
+      bottom: 5.5rem;
+      right: 2rem;
+      width: 320px;
+      background: var(--card-bg, #0d1117);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      z-index: 9999;
+      overflow: hidden;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+      transform: translateY(16px) scale(0.97);
+      opacity: 0;
+      pointer-events: none;
+      transition:
+        transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+        opacity 0.25s ease;
+      transform-origin: bottom right;
+    }
+    #custom-panel.open {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    @media (max-width: 400px) {
+      #custom-panel {
+        right: 1rem;
+        left: 1rem;
+        width: auto;
+        bottom: 5rem;
+      }
+      #custom-fab {
+        right: 1rem;
+        bottom: 1rem;
+      }
+    }
+
+    .cp-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 1rem 1.125rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    .cp-header-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cp-header-icon svg {
+      width: 16px; height: 16px;
+      fill: none;
+      stroke: var(--accent, #00bfff);
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .cp-header h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      margin: 0;
+      flex: 1;
+    }
+    .cp-header p {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.4);
+      margin: 2px 0 0;
+    }
+    .cp-close {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 16px;
+      line-height: 1;
+      transition: background 0.15s;
+    }
+    .cp-close:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .cp-section {
+      padding: 0.875rem 1.125rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .cp-section:last-of-type {
+      border-bottom: none;
+    }
+    .cp-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.35);
+      font-weight: 600;
+      margin-bottom: 0.625rem;
+    }
+
+    .cp-theme-row {
+      display: flex;
+      gap: 6px;
+    }
+    .cp-theme-btn {
+      flex: 1;
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.04);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .cp-theme-btn svg {
+      width: 13px; height: 13px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .cp-theme-btn.active {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+    .cp-theme-btn:hover:not(.active) {
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .cp-colors {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .cp-swatch {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      flex-shrink: 0;
+    }
+    .cp-swatch:hover {
+      transform: scale(1.12);
+    }
+    .cp-swatch.active {
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.6);
+    }
+    .cp-swatch-custom {
+      background: conic-gradient(
+        #e24b4a, #ef9f27, #639922, #1d9e75, #378add, #7f77dd, #e24b4a
+      );
+      position: relative;
+    }
+    .cp-swatch-custom input[type="color"] {
+      opacity: 0;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+
+    .cp-fonts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+    .cp-font-btn {
+      padding: 0.5rem 0.625rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      background: rgba(255, 255, 255, 0.04);
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .cp-font-btn:hover:not(.active) {
+      background: rgba(255, 255, 255, 0.07);
+    }
+    .cp-font-btn.active {
+      border-color: var(--accent, #00bfff);
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .cp-font-btn .fn-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.85);
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .cp-font-btn .fn-sample {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.3);
+      display: block;
+      margin-top: 1px;
+    }
+
+    .cp-footer {
+      padding: 0.625rem 1.125rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cp-footer span {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.3);
+    }
+    .cp-footer svg {
+      width: 12px; height: 12px;
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.3);
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    [data-theme="light"] #custom-panel {
+      background: #ffffff;
+      border-color: rgba(0, 0, 0, 0.1);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+    }
+    [data-theme="light"] .cp-header {
+      border-bottom-color: rgba(0, 0, 0, 0.08);
+    }
+    [data-theme="light"] .cp-header-icon {
+      background: rgba(0, 0, 0, 0.05);
+    }
+    [data-theme="light"] .cp-header h3 {
+      color: #1a1a1a;
+    }
+    [data-theme="light"] .cp-header p {
+      color: rgba(0, 0, 0, 0.4);
+    }
+    [data-theme="light"] .cp-close {
+      background: rgba(0, 0, 0, 0.05);
+      color: rgba(0, 0, 0, 0.4);
+    }
+    [data-theme="light"] .cp-close:hover {
+      background: rgba(0, 0, 0, 0.1);
+    }
+    [data-theme="light"] .cp-label {
+      color: rgba(0, 0, 0, 0.4);
+    }
+    [data-theme="light"] .cp-section {
+      border-bottom-color: rgba(0, 0, 0, 0.07);
+    }
+    [data-theme="light"] .cp-theme-btn {
+      border-color: rgba(0, 0, 0, 0.1);
+      background: rgba(0, 0, 0, 0.03);
+      color: rgba(0, 0, 0, 0.4);
+    }
+    [data-theme="light"] .cp-theme-btn.active {
+      background: rgba(0, 0, 0, 0.07);
+      border-color: rgba(0, 0, 0, 0.2);
+      color: #1a1a1a;
+    }
+    [data-theme="light"] .cp-font-btn {
+      border-color: rgba(0, 0, 0, 0.08);
+      background: rgba(0, 0, 0, 0.03);
+    }
+    [data-theme="light"] .cp-font-btn .fn-name {
+      color: rgba(0, 0, 0, 0.75);
+    }
+    [data-theme="light"] .cp-font-btn .fn-sample {
+      color: rgba(0, 0, 0, 0.35);
+    }
+    [data-theme="light"] .cp-font-btn.active {
+      background: rgba(0, 0, 0, 0.05);
+    }
+    [data-theme="light"] .cp-footer {
+      background: rgba(0, 0, 0, 0.03);
+      border-top-color: rgba(0, 0, 0, 0.07);
+    }
+    [data-theme="light"] .cp-footer span,
+    [data-theme="light"] .cp-footer svg {
+      color: rgba(0, 0, 0, 0.3);
+      stroke: rgba(0, 0, 0, 0.3);
+    }
+    [data-theme="light"] #custom-overlay {
+      background: rgba(0, 0, 0, 0.25);
+    }
+    [data-theme="light"] .cp-swatch.active {
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.5);
+    }
+
+    #cp-toast {
+      position: fixed;
+      bottom: 6rem;
+      right: 2rem;
+      background: rgba(20, 20, 25, 0.92);
+      color: #fff;
+      font-size: 12px;
+      padding: 0.5rem 0.875rem;
+      border-radius: 100px;
+      z-index: 10000;
+      opacity: 0;
+      transform: translateY(6px);
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    #cp-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    [data-theme="light"] #cp-toast {
+      background: rgba(30, 30, 36, 0.9);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">antonio-marcos</div>
+    <ul class="nav-links">
+      <li><a href="#sobre">sobre</a></li>
+      <li><a href="#projetos">projetos</a></li>
+      <li><a href="#habilidades">skills</a></li>
+      <li><a href="#contato">contato</a></li>
+    </ul>
+  </nav>
+
+              <section class="hero">
+    <div class="hero-inner">
+
+            <div class="hero-avatar">
+        <img src="zoro.jpg" alt="Foto de perfil de Antonio Marques">
+      </div>
+
+      <div class="hero-index">
+        <span></span>
+        desenvolvedor web · florianópolis · 2026
+      </div>
+
+      <h1 class="hero-name">
+        <span class="first">Antonio</span>
+        <span class="last">Marques</span>
+      </h1>
+
+      <div class="hero-status">
+        <div class="status-dot">disponível para projetos</div>
+        <p class="hero-desc">
+          Tenho <strong>18 anos</strong> e estou construindo minha carreira em desenvolvimento de software —
+          atualmente no <strong>curso técnico SENAI</strong>, criando interfaces com código limpo e
+          atenção ao detalhe.
+        </p>
+      </div>
+
+      <div class="hero-cta">
+        <a href="#projetos" class="btn btn-primary">ver projetos</a>
+        <a href="#contato" class="btn btn-ghost">entrar em contato</a>
+      </div>
+
+                                    <div class="hero-info-grid">
+        <div class="info-card">
+          <span class="info-key">foco</span>
+          <span class="info-val">Front-end · HTML · CSS · JS</span>
+        </div>
+        <div class="info-card">
+          <span class="info-key">curso</span>
+          <span class="info-val">SENAI Desenvolvimento de Software</span>
+        </div>
+        <div class="info-card">
+          <span class="info-key">base</span>
+          <span class="info-val">Florianópolis, SC · Brasil</span>
+        </div>
+        <div class="info-card">
+          <span class="info-key">status</span>
+          <span class="info-val accent">● ativo</span>
+        </div>
+        <div class="info-card">
+          <span class="info-key">stack</span>
+          <span class="info-val">HTML / CSS / JS</span>
+        </div>
+        <div class="info-card">
+          <span class="info-key">projetos</span>
+          <span class="info-val blue">2 concluídos</span>
+        </div>
+        <div class="info-card">
+          <span class="info-key">formação</span>
+          <span class="info-val">EM + SENAI</span>
+        </div>
+        <div class="info-card">
+          <span class="info-key">interesse</span>
+          <span class="info-val">Front-end · Design</span>
+        </div>
+        <div class="info-card">
+          <span class="info-key">github</span>
+          <span class="info-val blue">antoniommarques-maker</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="section-wrap">
+      <div class="section-header">
+        <div class="section-index">[ 01 ]</div>
+        <h2 class="section-title">quem <em>sou</em></h2>
+      </div>
+      <div class="about-layout">
+        <div class="about-body reveal">
+          <p>
+            Tenho <strong>18 anos</strong> e moro em Florianópolis, SC. Estou cursando o
+            <strong>Ensino Médio</strong> e o técnico de <strong>Desenvolvimento de Software no SENAI</strong>,
+            onde aprendo desde lógica de programação até criação de interfaces completas.
+          </p>
+          <p>
+            Sou movido pela curiosidade — gosto de entender o que acontece por baixo, não só usar.
+            Isso me leva a misturar <strong>narrativa, design e código</strong> nos meus projetos pessoais,
+            construindo páginas sobre temas que me interessam com atenção total aos detalhes visuais.
+          </p>
+          <p>
+            Aprendo construindo coisas reais. Cada projeto é um experimento: uma nova técnica de CSS,
+            um padrão de JavaScript, uma ideia de layout que nunca tentei antes.
+          </p>
+        </div>
+        <div class="about-aside reveal reveal-delay-1">
+          <div class="aside-row">
+            <span class="aside-label">idade</span>
+            <span class="aside-val">18</span>
+            <span class="aside-sub">anos</span>
+          </div>
+          <div class="aside-row">
+            <span class="aside-label">projetos web</span>
+            <span class="aside-val">2+</span>
+            <span class="aside-sub">completos e publicados</span>
+          </div>
+          <div class="aside-row">
+            <span class="aside-label">localização</span>
+            <span class="aside-val">SC</span>
+            <span class="aside-sub">Florianópolis · Brasil</span>
+          </div>
+          <div class="aside-row">
+            <span class="aside-label">formação</span>
+            <span class="aside-val" style="font-size:18px">SENAI</span>
+            <span class="aside-sub">Desenvolvimento de Software</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projetos">
+    <div class="section-wrap">
+      <div class="section-header">
+        <div class="section-index">[ 02 ]</div>
+        <h2 class="section-title">meus <em>projetos</em></h2>
+      </div>
+
+      <div class="projects-list">
+
+                <div class="project-row reveal">
+          <div class="proj-num">01</div>
+          <div class="proj-body">
+            <div class="proj-title-row">
+              <span class="proj-title">🌍 Conversor de Moedas Global</span>
+              <span class="proj-badge">💱 destaque</span>
+            </div>
+            <p class="proj-desc">
+              Aplicação web desenvolvida para realizar conversões entre moedas do mundo inteiro
+              em tempo real. O sistema permite selecionar qualquer moeda disponível, visualizar
+              taxas de câmbio atualizadas, inverter moedas, consultar o histórico de conversões
+              e utilizar uma interface moderna e responsiva.
+            </p>
+            <div class="proj-tags">
+              <span class="ptag">HTML5</span>
+              <span class="ptag gold">CSS3</span>
+              <span class="ptag blue">JavaScript</span>
+              <span class="ptag green">Fetch API</span>
+              <span class="ptag gold">API de Câmbio em Tempo Real</span>
+              <span class="ptag blue">Conversão Universal de Moedas</span>
+              <span class="ptag green">Atualização Automática</span>
+              <span class="ptag">Histórico de Conversões</span>
+              <span class="ptag gold">Modo Claro/Escuro</span>
+              <span class="ptag blue">Bandeiras dos Países</span>
+              <span class="ptag green">Busca Rápida</span>
+              <span class="ptag">Interface Responsiva</span>
+            </div>
+          </div>
+          <div class="proj-side">
+            <span class="proj-year">2026</span>
+            <a href="conversor-moedas.html" class="proj-link" target="_blank" rel="noopener">abrir ↗</a>
+          </div>
+        </div>
+
+        <div class="project-row reveal reveal-delay-1">
+          <div class="proj-num">02</div>
+          <div class="proj-body">
+            <div class="proj-title-row">
+              <span class="proj-title">📋 Nimbus — Gerenciador de Tarefas</span>
+              <span class="proj-badge">✅ destaque</span>
+            </div>
+            <p class="proj-desc">
+              Aplicação de organização de tarefas em formato kanban, com múltiplos quadros e colunas
+              personalizáveis, dashboard de produtividade, calendário, favoritos e histórico completo
+              de alterações. Conta com atalhos de teclado e configurações para deixar o fluxo de
+              trabalho mais rápido e eficiente.
+            </p>
+            <div class="proj-tags">
+              <span class="ptag">HTML5</span>
+              <span class="ptag gold">CSS3</span>
+              <span class="ptag blue">JavaScript</span>
+              <span class="ptag green">Quadros Kanban</span>
+              <span class="ptag gold">Dashboard</span>
+              <span class="ptag blue">Calendário</span>
+              <span class="ptag green">Histórico de Alterações</span>
+              <span class="ptag">Atalhos de Teclado</span>
+              <span class="ptag gold">LocalStorage</span>
+              <span class="ptag blue">Interface Responsiva</span>
+            </div>
+          </div>
+          <div class="proj-side">
+            <span class="proj-year">2026</span>
+            <a href="gerenciador-tarefas.html" class="proj-link" target="_blank" rel="noopener">abrir ↗</a>
+          </div>
+        </div>
+
+        <div class="project-row reveal reveal-delay-2">
+          <div class="proj-num">03</div>
+          <div class="proj-body">
+            <div class="proj-title-row">
+              <span class="proj-title">🔥 Braseiro — Sistema de Pedidos</span>
+              <span class="proj-badge">🛒 destaque</span>
+            </div>
+            <p class="proj-desc">
+              Sistema completo de pedidos online para um restaurante, com cardápio navegável,
+              carrinho de compras, favoritos e fluxo de finalização de pedido. Interface pensada
+              para uma experiência de compra fluida do início ao fim.
+            </p>
+            <div class="proj-tags">
+              <span class="ptag">HTML5</span>
+              <span class="ptag gold">CSS3</span>
+              <span class="ptag blue">JavaScript</span>
+              <span class="ptag green">Carrinho de Compras</span>
+              <span class="ptag gold">Cardápio Dinâmico</span>
+              <span class="ptag blue">Favoritos</span>
+              <span class="ptag green">Checkout</span>
+              <span class="ptag">Interface Responsiva</span>
+            </div>
+          </div>
+          <div class="proj-side">
+            <span class="proj-year">2026</span>
+            <a href="sistema_de_pedidos.html" class="proj-link" target="_blank" rel="noopener">abrir ↗</a>
+          </div>
+        </div>
+
+        <div class="project-row empty reveal reveal-delay-3">
+          <div class="proj-num">04</div>
+          <div class="proj-body">
+            <div class="proj-title-row">
+              <span class="proj-title">Próximo Projeto</span>
+              <span class="proj-badge" style="border-color:rgba(90,112,128,0.3); color:var(--muted); background:transparent;">em andamento</span>
+            </div>
+            <p class="proj-desc">
+              Em desenvolvimento. Novos projetos surgindo no SENAI e em iniciativas pessoais.
+            </p>
+            <div class="proj-tags">
+              <span class="ptag">???</span>
+            </div>
+          </div>
+          <div class="proj-side">
+            <span class="proj-year">2026</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="habilidades">
+    <div class="section-wrap">
+      <div class="section-header">
+        <div class="section-index">[ 03 ]</div>
+        <h2 class="section-title">minhas <em>skills</em></h2>
+      </div>
+
+      <table class="skills-table">
+        <tbody>
+          <tr class="reveal">
+            <td class="sk-name">HTML</td>
+            <td class="sk-cat">Semântica · Estrutura</td>
+            <td style="width:100%">
+              <div class="sk-bar-wrap">
+                <div class="sk-bar" data-width="0.82"></div>
+              </div>
+            </td>
+            <td class="sk-pct">82%</td>
+          </tr>
+          <tr class="reveal reveal-delay-1">
+            <td class="sk-name">CSS</td>
+            <td class="sk-cat">Animações · Layout</td>
+            <td style="width:100%">
+              <div class="sk-bar-wrap">
+                <div class="sk-bar" data-width="0.80"></div>
+              </div>
+            </td>
+            <td class="sk-pct">80%</td>
+          </tr>
+          <tr class="reveal reveal-delay-2">
+            <td class="sk-name">JavaScript</td>
+            <td class="sk-cat">DOM · Eventos</td>
+            <td style="width:100%">
+              <div class="sk-bar-wrap">
+                <div class="sk-bar" data-width="0.60"></div>
+              </div>
+            </td>
+            <td class="sk-pct">60%</td>
+          </tr>
+          <tr class="reveal reveal-delay-3">
+            <td class="sk-name">Lógica</td>
+            <td class="sk-cat">Algoritmos · Raciocínio</td>
+            <td style="width:100%">
+              <div class="sk-bar-wrap">
+                <div class="sk-bar" data-width="0.70"></div>
+              </div>
+            </td>
+            <td class="sk-pct">70%</td>
+          </tr>
+          <tr class="reveal">
+            <td class="sk-name">UI Design</td>
+            <td class="sk-cat">Tipografia · Composição</td>
+            <td style="width:100%">
+              <div class="sk-bar-wrap">
+                <div class="sk-bar" data-width="0.75"></div>
+              </div>
+            </td>
+            <td class="sk-pct">75%</td>
+          </tr>
+          <tr class="reveal reveal-delay-1">
+            <td class="sk-name">Dev Tools</td>
+            <td class="sk-cat">DevTools · Git básico</td>
+            <td style="width:100%">
+              <div class="sk-bar-wrap">
+                <div class="sk-bar" data-width="0.55"></div>
+              </div>
+            </td>
+            <td class="sk-pct">55%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="contato">
+    <div class="section-wrap">
+      <div class="section-header">
+        <div class="section-index">[ 04 ]</div>
+        <h2 class="section-title">fale <em>comigo</em></h2>
+      </div>
+      <div class="contact-grid">
+        <p class="contact-intro reveal">
+          Estou sempre aberto a novos desafios, projetos e oportunidades de colaboração.
+           e desenvolvimento, ficarei feliz em trocar experiências. <strong>Entre em contato</strong> e responderei o mais breve possível.</strong>
+
+        </p>
+        <div class="contact-list reveal reveal-delay-1">
+          <a href="mailto:isabelantonio3003@gmail.com" class="contact-item">
+            <div class="ci-left">
+              <span class="ci-type">email</span>
+              <span class="ci-label">isabelantonio3003@gmail.com</span>
+            </div>
+            <span class="ci-arrow">→</span>
+          </a>
+          <a href="https://github.com/AntonioMarcos3006" target="_blank" class="contact-item">
+            <div class="ci-left">
+              <span class="ci-type">github</span>
+              <span class="ci-label">AntonioMarcos3006</span>
+            </div>
+            <span class="ci-arrow">→</span>
+          </a>
+          <a href="https://linkedin.com/in/antonio-marques" target="_blank" class="contact-item">
+            <div class="ci-left">
+              <span class="ci-type">linkedin</span>
+              <span class="ci-label">linkedin.com/in/antonio-marques</span>
+            </div>
+            <span class="ci-arrow">→</span>
+          </a>
+          <a href="https://wa.me/554898000737" target="_blank" class="contact-item">
+            <div class="ci-left">
+              <span class="ci-type">whatsapp</span>
+              <span class="ci-label">+55 (48) 9800-0737</span>
+            </div>
+            <span class="ci-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="f-left">© 2026 Antonio Marcos</span>
+    <span class="f-center">antonio-marcos</span>
+    <span class="f-right">Florianópolis · SC · Brasil</span>
+  </footer>
+
+      
+  <div id="custom-overlay" aria-hidden="true"></div>
+
+  <div id="cp-toast" role="status" aria-live="polite"></div>
+
+  <button id="custom-fab" aria-label="Abrir painel de personalização" title="Personalizar">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/>
+    </svg>
+  </button>
+
+  <div id="custom-panel" role="dialog" aria-modal="true" aria-label="Painel de personalização">
+
+    <div class="cp-header">
+      <div class="cp-header-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/>
+        </svg>
+      </div>
+      <div>
+        <h3>Personalizar</h3>
+        <p>Aparência do portfólio</p>
+      </div>
+      <button class="cp-close" id="cp-close-btn" aria-label="Fechar painel">✕</button>
+    </div>
+
+    <div class="cp-section">
+      <div class="cp-label">Tema</div>
+      <div class="cp-theme-row">
+        <button class="cp-theme-btn" id="btn-dark" data-theme-val="dark">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/>
+          </svg>
+          Escuro
+        </button>
+        <button class="cp-theme-btn" id="btn-light" data-theme-val="light">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          Claro
+        </button>
+      </div>
+    </div>
+
+    <div class="cp-section">
+      <div class="cp-label">Cor Principal</div>
+      <div class="cp-colors">
+        <div class="cp-swatch" data-color="#00bfff" title="Azul" style="background:#00bfff;" tabindex="0" role="button" aria-label="Cor azul"></div>
+        <div class="cp-swatch" data-color="#1D9E75" title="Verde" style="background:#1D9E75;" tabindex="0" role="button" aria-label="Cor verde"></div>
+        <div class="cp-swatch" data-color="#E24B4A" title="Vermelho" style="background:#E24B4A;" tabindex="0" role="button" aria-label="Cor vermelha"></div>
+        <div class="cp-swatch" data-color="#7F77DD" title="Roxo" style="background:#7F77DD;" tabindex="0" role="button" aria-label="Cor roxa"></div>
+        <div class="cp-swatch" data-color="#EF9F27" title="Laranja" style="background:#EF9F27;" tabindex="0" role="button" aria-label="Cor laranja"></div>
+        <div class="cp-swatch cp-swatch-custom" title="Personalizado" tabindex="0" role="button" aria-label="Cor personalizada">
+          <input type="color" id="cp-color-picker" value="#00bfff" aria-label="Escolher cor personalizada">
+        </div>
+      </div>
+    </div>
+
+    <div class="cp-section">
+      <div class="cp-label">Fonte</div>
+      <div class="cp-fonts">
+        <button class="cp-font-btn" data-font="Space Grotesk" data-font-fallback="sans-serif">
+          <span class="fn-name" style="font-family:'Space Grotesk',sans-serif">Space Grotesk</span>
+          <span class="fn-sample" style="font-family:'Space Grotesk',sans-serif">Padrão · Técnico</span>
+        </button>
+        <button class="cp-font-btn" data-font="Inter" data-font-fallback="sans-serif">
+          <span class="fn-name" style="font-family:'Inter',sans-serif">Inter</span>
+          <span class="fn-sample" style="font-family:'Inter',sans-serif">Neutro · Moderno</span>
+        </button>
+        <button class="cp-font-btn" data-font="Poppins" data-font-fallback="sans-serif">
+          <span class="fn-name" style="font-family:'Poppins',sans-serif">Poppins</span>
+          <span class="fn-sample" style="font-family:'Poppins',sans-serif">Geométrico · Suave</span>
+        </button>
+        <button class="cp-font-btn" data-font="Roboto" data-font-fallback="sans-serif">
+          <span class="fn-name" style="font-family:'Roboto',sans-serif">Roboto</span>
+          <span class="fn-sample" style="font-family:'Roboto',sans-serif">Clean · Universal</span>
+        </button>
+        <button class="cp-font-btn" data-font="Montserrat" data-font-fallback="sans-serif">
+          <span class="fn-name" style="font-family:'Montserrat',sans-serif">Montserrat</span>
+          <span class="fn-sample" style="font-family:'Montserrat',sans-serif">Bold · Editorial</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="cp-footer">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"/>
+        <polyline points="17 21 17 13 7 13 7 21"/>
+        <polyline points="7 3 7 8 15 8"/>
+      </svg>
+      <span>Preferências salvas automaticamente</span>
+    </div>
+
+  </div>
+
+        <script>
+
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    reveals.forEach(el => revealObs.observe(el));
+
+    const bars = document.querySelectorAll('.sk-bar');
+    const barObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const w = parseFloat(e.target.getAttribute('data-width'));
+          e.target.style.width = (w * 100) + '%';
+          e.target.classList.add('visible');
+          barObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    bars.forEach(b => barObs.observe(b));
+
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const secObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(a => {
+            a.style.color = '';
+            if (a.getAttribute('href') === '#' + e.target.id) {
+              a.style.color = 'var(--accent)';
+            }
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => secObs.observe(s));
+
+    const LS_THEME  = 'am_theme';
+    const LS_COLOR  = 'am_color';
+    const LS_FONT   = 'am_font';
+
+    const COLOR_MAP = {
+      '#00bfff': { label: 'Azul'     },
+      '#1D9E75': { label: 'Verde'    },
+      '#E24B4A': { label: 'Vermelho' },
+      '#7F77DD': { label: 'Roxo'     },
+      '#EF9F27': { label: 'Laranja'  },
+    };
+
+    const FONT_MAP = {
+      'Space Grotesk': "'Space Grotesk', sans-serif",
+      'Inter':         "'Inter', sans-serif",
+      'Poppins':       "'Poppins', sans-serif",
+      'Roboto':        "'Roboto', sans-serif",
+      'Montserrat':    "'Montserrat', sans-serif",
+    };
+
+    let currentTheme = localStorage.getItem(LS_THEME) || 'dark';
+    let currentColor = localStorage.getItem(LS_COLOR) || '#00bfff';
+    let currentFont  = localStorage.getItem(LS_FONT)  || 'Space Grotesk';
+
+    const panel      = document.getElementById('custom-panel');
+    const fab        = document.getElementById('custom-fab');
+    const overlay    = document.getElementById('custom-overlay');
+    const closeBtn   = document.getElementById('cp-close-btn');
+    const btnDark    = document.getElementById('btn-dark');
+    const btnLight   = document.getElementById('btn-light');
+    const swatches   = document.querySelectorAll('.cp-swatch:not(.cp-swatch-custom)');
+    const colorPicker= document.getElementById('cp-color-picker');
+    const fontBtns   = document.querySelectorAll('.cp-font-btn');
+    const toast      = document.getElementById('cp-toast');
+
+    let toastTimer = null;
+
+    function applyTheme(theme) {
+      currentTheme = theme;
+      if (theme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+      btnDark.classList.toggle('active',  theme === 'dark');
+      btnLight.classList.toggle('active', theme === 'light');
+      localStorage.setItem(LS_THEME, theme);
+    }
+
+    function applyColor(hex) {
+      currentColor = hex;
+      document.documentElement.style.setProperty('--accent', hex);
+      swatches.forEach(s => {
+        s.classList.toggle('active', s.dataset.color === hex);
+      });
+      colorPicker.value = hex;
+      localStorage.setItem(LS_COLOR, hex);
+    }
+
+    function applyFont(fontName) {
+      currentFont = fontName;
+      const stack = FONT_MAP[fontName] || "'Space Grotesk', sans-serif";
+      document.body.style.fontFamily = stack;
+      fontBtns.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.font === fontName);
+      });
+      localStorage.setItem(LS_FONT, fontName);
+    }
+
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    function openPanel() {
+      panel.classList.add('open');
+      overlay.classList.add('visible');
+      fab.classList.add('open');
+      fab.setAttribute('aria-expanded', 'true');
+      btnDark.focus();
+    }
+    function closePanel() {
+      panel.classList.remove('open');
+      overlay.classList.remove('visible');
+      fab.classList.remove('open');
+      fab.setAttribute('aria-expanded', 'false');
+    }
+
+    fab.addEventListener('click', () => {
+      panel.classList.contains('open') ? closePanel() : openPanel();
+    });
+    overlay.addEventListener('click', closePanel);
+    closeBtn.addEventListener('click', closePanel);
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && panel.classList.contains('open')) closePanel();
+    });
+
+    btnDark.addEventListener('click', () => {
+      applyTheme('dark');
+      showToast('Tema escuro ativado');
+    });
+    btnLight.addEventListener('click', () => {
+      applyTheme('light');
+      showToast('Tema claro ativado');
+    });
+
+    swatches.forEach(swatch => {
+      swatch.addEventListener('click', () => {
+        const hex = swatch.dataset.color;
+        applyColor(hex);
+        const label = COLOR_MAP[hex] ? COLOR_MAP[hex].label : 'Cor';
+        showToast(`Cor ${label} aplicada`);
+      });
+      swatch.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          swatch.click();
+        }
+      });
+    });
+
+    colorPicker.addEventListener('input', e => {
+      const hex = e.target.value;
+      applyColor(hex);
+      swatches.forEach(s => s.classList.remove('active'));
+    });
+    colorPicker.addEventListener('change', e => {
+      showToast('Cor personalizada aplicada');
+      localStorage.setItem(LS_COLOR, e.target.value);
+    });
+
+    fontBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        applyFont(btn.dataset.font);
+        showToast(`Fonte ${btn.dataset.font} aplicada`);
+      });
+    });
+
+    (function init() {
+      applyTheme(currentTheme);
+      applyColor(currentColor);
+      applyFont(currentFont);
+
+      const isPreset = Object.keys(COLOR_MAP).includes(currentColor);
+      if (!isPreset) {
+        colorPicker.value = currentColor;
+      }
+    })();
+
+  </script>
+
+</body>
+</html>
