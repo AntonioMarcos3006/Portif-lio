@@ -72,6 +72,6 @@ Acesse o projeto online:
 
 <div align="center">
 
-**Desenvolvido com ❤️ por Antonio Marques**
+**Desenvolvido por Antonio Marques**
 
 </div>
