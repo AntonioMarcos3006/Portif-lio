@@ -1,70 +1,77 @@
 <div align="center">
 
-# 💼 Antonio Marques - Portfolio
+# 💼 Portfólio - Antonio Marques
 
-A modern and responsive portfolio built with **HTML**, **CSS**, and **JavaScript** to showcase my projects, skills, and journey as a Front-End Developer.
+Um portfólio moderno e responsivo desenvolvido com **HTML**, **CSS** e **JavaScript**, criado para apresentar meus projetos, habilidades e minha evolução como Desenvolvedor Front-End.
 
-### 🌐 Live Demo
+### 🌐 Acesse o Portfólio
 👉 **https://portifolio-antonio.netlify.app/**
-
----
 
 </div>
 
-## 🚀 About
+---
 
-This portfolio was created to present my projects, technical skills, and contact information in a clean, modern, and interactive interface.
+## 📖 Sobre
 
-## ✨ Features
-
-- 🎨 Modern UI/UX
-- 📱 Fully Responsive Design
-- 🌙 Light & Dark Mode
-- 🎨 Custom Theme Colors
-- 🔤 Font Customization
-- ✨ Smooth Animations
-- 📊 Skills Section
-- 📂 Project Showcase
-- 📬 Contact Section
+Este portfólio foi desenvolvido com o objetivo de reunir meus principais projetos, demonstrar minhas habilidades em desenvolvimento web e servir como uma vitrine da minha evolução como programador.
 
 ---
 
-## 🛠️ Technologies
+## ✨ Funcionalidades
 
-<p>
-<img src="https://skillicons.dev/icons?i=html,css,js,git,github,vscode" />
+- 🎨 Design moderno e minimalista
+- 📱 Layout totalmente responsivo
+- 🌙 Modo Claro e Escuro
+- 🎨 Personalização de cores
+- 🔤 Alteração de fontes
+- ✨ Animações suaves
+- 📂 Seção de projetos
+- 📊 Exibição das habilidades
+- 📬 Área de contato
+- ⚙️ Configurações salvas no navegador (LocalStorage)
+
+---
+
+## 🚀 Tecnologias Utilizadas
+
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=html,css,js,git,github,vscode" />
 </p>
 
----
-
-## 📂 Featured Projects
-
-- 🌍 Currency Converter
-- 📋 Nimbus Task Manager
-- 🔥 Braseiro Restaurant Ordering System
+- HTML5
+- CSS3
+- JavaScript (ES6+)
+- LocalStorage
+- Intersection Observer API
 
 ---
 
-## 📸 Preview
+## 📂 Projetos em Destaque
 
-> Visit the portfolio to see the complete experience.
-
-🌐 **https://portifolio-antonio.netlify.app/**
+- 🌍 Conversor de Moedas Global
+- 📋 Nimbus — Gerenciador de Tarefas
+- 🔥 Braseiro — Sistema de Pedidos
 
 ---
 
-## 📬 Contact
+## 📸 Demonstração
 
-- 📧 Email: **isabelantonio3003@gmail.com**
-- 💻 GitHub: **https://github.com/AntonioMarcos3006**
-- 💼 LinkedIn: **https://linkedin.com/in/antonio-marques**
+Acesse o projeto online:
+
+### 🔗 https://portifolio-antonio.netlify.app/
+
+---
+
+## 📬 Contato
+
+- 📧 **Email:** isabelantonio3003@gmail.com
+- 💻 **GitHub:** https://github.com/AntonioMarcos3006
+- 💼 **LinkedIn:** https://linkedin.com/in/antonio-marques
 
 ---
 
 <div align="center">
 
-### ⭐ If you liked this project, leave a Star!
-
-Made with ❤️ by **Antonio Marques**
+**Desenvolvido com ❤️ por Antonio Marques**
 
 </div>
