@@ -1,6 +1,6 @@
 <div align="center">
 
-# 💼 Portfólio - Antonio Marques
+#  Portfólio - Antonio Marques
 
 Um portfólio moderno e responsivo desenvolvido com **HTML**, **CSS** e **JavaScript**, criado para apresentar meus projetos, habilidades e minha evolução como Desenvolvedor Front-End.
 
