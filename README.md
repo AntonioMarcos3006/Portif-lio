@@ -5,19 +5,19 @@
 Um portfólio moderno e responsivo desenvolvido com **HTML**, **CSS** e **JavaScript**, criado para apresentar meus projetos, habilidades e minha evolução como Desenvolvedor Front-End.
 
 ### 🌐 Acesse o Portfólio
-👉 **https://portifolio-antonio.netlify.app/**
+ **https://portifolio-antonio.netlify.app/**
 
 </div>
 
 ---
 
-## 📖 Sobre
+##  Sobre
 
 Este portfólio foi desenvolvido com o objetivo de reunir meus principais projetos, demonstrar minhas habilidades em desenvolvimento web e servir como uma vitrine da minha evolução como programador.
 
 ---
 
-## ✨ Funcionalidades
+##  Funcionalidades
 
 - 🎨 Design moderno e minimalista
 - 📱 Layout totalmente responsivo
@@ -32,7 +32,7 @@ Este portfólio foi desenvolvido com o objetivo de reunir meus principais projet
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+##  Tecnologias Utilizadas
 
 <p align="center">
   <img src="https://skillicons.dev/icons?i=html,css,js,git,github,vscode" />
@@ -54,7 +54,7 @@ Este portfólio foi desenvolvido com o objetivo de reunir meus principais projet
 
 ---
 
-## 📸 Demonstração
+##  Demonstração
 
 Acesse o projeto online:
 
@@ -62,11 +62,11 @@ Acesse o projeto online:
 
 ---
 
-## 📬 Contato
+##  Contato
 
-- 📧 **Email:** isabelantonio3003@gmail.com
-- 💻 **GitHub:** https://github.com/AntonioMarcos3006
-- 💼 **LinkedIn:** https://linkedin.com/in/antonio-marques
+-  **Email:** isabelantonio3003@gmail.com
+-  **GitHub:** https://github.com/AntonioMarcos3006
+-  **LinkedIn:** https://linkedin.com/in/antonio-marques
 
 ---
 
