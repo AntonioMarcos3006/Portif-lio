@@ -3,160 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Antonio Marques — Dev</title>
+  <title>Antonio Marques — Desenvolvedor Front-End</title>
+  <meta name="description" content="Portfólio de Antonio Marques, estudante de Desenvolvimento de Software no SENAI. Projetos em HTML, CSS, JavaScript e React.">
+  <meta name="theme-color" content="#18191e">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
 
   <nav>
-    <div class="nav-logo">antonio-marcos</div>
+    <a href="#" class="nav-logo grad" aria-label="Antonio Marques, início">AM</a>
     <ul class="nav-links">
-      <li><a href="#sobre">sobre</a></li>
-      <li><a href="#projetos">projetos</a></li>
-      <li><a href="#habilidades">skills</a></li>
-      <li><a href="#contato">contato</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#habilidades">Skills</a></li>
+      <li class="nav-cta"><a href="#contato">Contato</a></li>
     </ul>
   </nav>
 
-              <section class="hero">
-    <div class="hero-inner">
-
-            <div class="hero-avatar">
-        <img src="zoro.jpg" alt="Foto de perfil de Antonio Marques">
-      </div>
-
-      <div class="hero-index">
-        <span></span>
-        desenvolvedor web · florianópolis · 2026
-      </div>
-
-      <h1 class="hero-name">
-        <span class="first">Antonio</span>
-        <span class="last">Marques</span>
-      </h1>
-
-      <div class="hero-status">
-        <div class="status-dot">disponível para projetos</div>
+  <header class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-text">
+        <p class="hero-hi">Olá, meu nome é</p>
+        <h1 class="hero-name grad">Antonio Marques</h1>
+        <span class="hero-role">Desenvolvedor Front-End</span>
         <p class="hero-desc">
           Tenho <strong>18 anos</strong> e estou construindo minha carreira em desenvolvimento de software —
-          atualmente no <strong>curso técnico SENAI</strong>, criando interfaces com código limpo e
+          atualmente no <strong>curso técnico do SENAI</strong>, criando interfaces com código limpo e
           atenção ao detalhe.
         </p>
-      </div>
-
-      <div class="hero-cta">
-        <a href="#projetos" class="btn btn-primary">ver projetos</a>
-        <a href="#contato" class="btn btn-ghost">entrar em contato</a>
-      </div>
-
-                                    <div class="hero-info-grid">
-        <div class="info-card">
-          <span class="info-key">foco</span>
-          <span class="info-val">Front-end · HTML · CSS · JS</span>
-        </div>
-        <div class="info-card">
-          <span class="info-key">curso</span>
-          <span class="info-val">SENAI Desenvolvimento de Software</span>
-        </div>
-        <div class="info-card">
-          <span class="info-key">base</span>
-          <span class="info-val">Florianópolis, SC · Brasil</span>
-        </div>
-        <div class="info-card">
-          <span class="info-key">status</span>
-          <span class="info-val accent">● ativo</span>
-        </div>
-        <div class="info-card">
-          <span class="info-key">stack</span>
-          <span class="info-val">HTML / CSS / JS</span>
-        </div>
-        <div class="info-card">
-          <span class="info-key">projetos</span>
-          <span class="info-val blue">2 concluídos</span>
-        </div>
-        <div class="info-card">
-          <span class="info-key">formação</span>
-          <span class="info-val">EM + SENAI</span>
-        </div>
-        <div class="info-card">
-          <span class="info-key">interesse</span>
-          <span class="info-val">Front-end · Design</span>
-        </div>
-        <div class="info-card">
-          <span class="info-key">github</span>
-          <span class="info-val blue">antoniommarques-maker</span>
+        <div class="status-dot">Disponível para projetos</div>
+        <div class="hero-cta">
+          <a href="#projetos" class="btn btn-primary">Ver projetos</a>
+          <a href="#contato" class="btn btn-ghost">Entrar em contato</a>
         </div>
       </div>
-
+      <div class="hero-avatar-col">
+        <div class="hero-avatar">
+          <img src="gon.jpg" width="320" height="320" alt="Foto de perfil de Antonio Marques: ilustração do Gon Freecss, de Hunter x Hunter">
+        </div>
+        <p class="hero-loc">Florianópolis, SC · Brasil</p>
+      </div>
     </div>
-  </section>
+  </header>
 
-  <section id="sobre">
-    <div class="section-wrap">
-      <div class="section-header">
-        <div class="section-index">[ 01 ]</div>
-        <h2 class="section-title">quem <em>sou</em></h2>
-      </div>
+  <section id="sobre" class="panel">
+    <div class="wrap">
+      <h2 class="section-title">Sobre mim</h2>
+      <p class="section-sub">Sou <strong>Antonio Marques</strong>, estudante de Desenvolvimento de Software</p>
       <div class="about-layout">
         <div class="about-body reveal">
-          <p>
-            Tenho <strong>16 anos</strong> e moro em Florianópolis, SC. Estou cursando o
-            <strong>Ensino Médio</strong> e o técnico de <strong>Desenvolvimento de Software no SENAI</strong>,
-            onde aprendo desde lógica de programação até criação de interfaces completas.
-          </p>
-          <p>
-            Sou movido pela curiosidade — gosto de entender o que acontece por baixo, não só usar.
-            Isso me leva a misturar <strong>narrativa, design e código</strong> nos meus projetos pessoais,
-            construindo páginas sobre temas que me interessam com atenção total aos detalhes visuais.
-          </p>
-          <p>
-            Aprendo construindo coisas reais. Cada projeto é um experimento: uma nova técnica de CSS,
-            um padrão de JavaScript, uma ideia de layout que nunca tentei antes.
-          </p>
+          <p>Moro em Florianópolis, SC. Estou cursando o <strong>Ensino Médio</strong> e o técnico de <strong>Desenvolvimento de Software no SENAI</strong>, onde aprendo desde lógica de programação até a criação de interfaces completas.</p>
+          <p>Sou movido pela curiosidade — gosto de entender o que acontece por baixo, não só usar. Isso me leva a misturar <strong>narrativa, design e código</strong> nos meus projetos pessoais, construindo páginas sobre temas que me interessam com atenção total aos detalhes visuais.</p>
+          <p>Aprendo construindo coisas reais. Cada projeto é um experimento: uma nova técnica de CSS, um padrão de JavaScript, uma ideia de layout que nunca tentei antes.</p>
         </div>
         <div class="about-aside reveal reveal-delay-1">
-          <div class="aside-row">
-            <span class="aside-label">idade</span>
-            <span class="aside-val">18</span>
-            <span class="aside-sub">anos</span>
-          </div>
-          <div class="aside-row">
-            <span class="aside-label">projetos web</span>
-            <span class="aside-val">2+</span>
-            <span class="aside-sub">completos e publicados</span>
-          </div>
-          <div class="aside-row">
-            <span class="aside-label">localização</span>
-            <span class="aside-val">SC</span>
-            <span class="aside-sub">Florianópolis · Brasil</span>
-          </div>
-          <div class="aside-row">
-            <span class="aside-label">formação</span>
-            <span class="aside-val" style="font-size:18px">SENAI</span>
-            <span class="aside-sub">Desenvolvimento de Software</span>
-          </div>
+          <div class="aside-row"><span class="aside-label">Idade</span><span class="aside-val">18 anos</span></div>
+          <div class="aside-row"><span class="aside-label">Projetos web</span><span class="aside-val">4</span><span class="aside-sub">completos e publicados</span></div>
+          <div class="aside-row"><span class="aside-label">Localização</span><span class="aside-val">Florianópolis</span><span class="aside-sub">Santa Catarina · Brasil</span></div>
+          <div class="aside-row"><span class="aside-label">Formação</span><span class="aside-val">SENAI</span><span class="aside-sub">Desenvolvimento de Software</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="projetos">
+  <section id="projetos" class="panel">
     <div class="section-wrap">
-      <div class="section-header">
-        <div class="section-index">[ 02 ]</div>
-        <h2 class="section-title">meus <em>projetos</em></h2>
-      </div>
+      <h2 class="section-title">Meus projetos</h2>
+      <p class="section-sub">Quatro projetos publicados, do conversor de moedas ao internet banking</p>
 
       <div class="projects-list">
 
                 <div class="project-row reveal">
-          <div class="proj-num">01</div>
           <div class="proj-body">
             <div class="proj-title-row">
               <span class="proj-title">🌍 Conversor de Moedas Global</span>
-              <span class="proj-badge">💱 destaque</span>
+              <span class="proj-badge">destaque</span>
             </div>
             <p class="proj-desc">
               Aplicação web desenvolvida para realizar conversões entre moedas do mundo inteiro
@@ -166,31 +91,30 @@
             </p>
             <div class="proj-tags">
               <span class="ptag">HTML5</span>
-              <span class="ptag gold">CSS3</span>
-              <span class="ptag blue">JavaScript</span>
-              <span class="ptag green">Fetch API</span>
-              <span class="ptag gold">API de Câmbio em Tempo Real</span>
-              <span class="ptag blue">Conversão Universal de Moedas</span>
-              <span class="ptag green">Atualização Automática</span>
+              <span class="ptag">CSS3</span>
+              <span class="ptag">JavaScript</span>
+              <span class="ptag">Fetch API</span>
+              <span class="ptag">API de Câmbio em Tempo Real</span>
+              <span class="ptag">Conversão Universal de Moedas</span>
+              <span class="ptag">Atualização Automática</span>
               <span class="ptag">Histórico de Conversões</span>
-              <span class="ptag gold">Modo Claro/Escuro</span>
-              <span class="ptag blue">Bandeiras dos Países</span>
-              <span class="ptag green">Busca Rápida</span>
+              <span class="ptag">Modo Claro/Escuro</span>
+              <span class="ptag">Bandeiras dos Países</span>
+              <span class="ptag">Busca Rápida</span>
               <span class="ptag">Interface Responsiva</span>
             </div>
           </div>
           <div class="proj-side">
             <span class="proj-year">2026</span>
-            <a href="https://currency-converter67.netlify.app/" class="proj-link" target="_blank" rel="noopener">abrir ↗</a>
+            <a href="https://currency-converter67.netlify.app/" class="proj-link" target="_blank" rel="noopener noreferrer">Abrir projeto</a>
           </div>
         </div>
 
         <div class="project-row reveal reveal-delay-1">
-          <div class="proj-num">02</div>
           <div class="proj-body">
             <div class="proj-title-row">
               <span class="proj-title">📋 Nimbus — Gerenciador de Tarefas</span>
-              <span class="proj-badge">✅ destaque</span>
+              <span class="proj-badge">destaque</span>
             </div>
             <p class="proj-desc">
               Aplicação de organização de tarefas em formato kanban, com múltiplos quadros e colunas
@@ -200,29 +124,28 @@
             </p>
             <div class="proj-tags">
               <span class="ptag">HTML5</span>
-              <span class="ptag gold">CSS3</span>
-              <span class="ptag blue">JavaScript</span>
-              <span class="ptag green">Quadros Kanban</span>
-              <span class="ptag gold">Dashboard</span>
-              <span class="ptag blue">Calendário</span>
-              <span class="ptag green">Histórico de Alterações</span>
+              <span class="ptag">CSS3</span>
+              <span class="ptag">JavaScript</span>
+              <span class="ptag">Quadros Kanban</span>
+              <span class="ptag">Dashboard</span>
+              <span class="ptag">Calendário</span>
+              <span class="ptag">Histórico de Alterações</span>
               <span class="ptag">Atalhos de Teclado</span>
-              <span class="ptag gold">LocalStorage</span>
-              <span class="ptag blue">Interface Responsiva</span>
+              <span class="ptag">LocalStorage</span>
+              <span class="ptag">Interface Responsiva</span>
             </div>
           </div>
           <div class="proj-side">
             <span class="proj-year">2026</span>
-            <a href="https://task-manager42.netlify.app/" class="proj-link" target="_blank" rel="noopener">abrir ↗</a>
+            <a href="https://task-manager42.netlify.app/" class="proj-link" target="_blank" rel="noopener noreferrer">Abrir projeto</a>
           </div>
         </div>
 
         <div class="project-row reveal reveal-delay-2">
-          <div class="proj-num">03</div>
           <div class="proj-body">
             <div class="proj-title-row">
               <span class="proj-title">🔥 Braseiro — Sistema de Pedidos</span>
-              <span class="proj-badge">🛒 destaque</span>
+              <span class="proj-badge">destaque</span>
             </div>
             <p class="proj-desc">
               Sistema completo de pedidos online para um restaurante, com cardápio navegável,
@@ -231,27 +154,26 @@
             </p>
             <div class="proj-tags">
               <span class="ptag">HTML5</span>
-              <span class="ptag gold">CSS3</span>
-              <span class="ptag blue">JavaScript</span>
-              <span class="ptag green">Carrinho de Compras</span>
-              <span class="ptag gold">Cardápio Dinâmico</span>
-              <span class="ptag blue">Favoritos</span>
-              <span class="ptag green">Checkout</span>
+              <span class="ptag">CSS3</span>
+              <span class="ptag">JavaScript</span>
+              <span class="ptag">Carrinho de Compras</span>
+              <span class="ptag">Cardápio Dinâmico</span>
+              <span class="ptag">Favoritos</span>
+              <span class="ptag">Checkout</span>
               <span class="ptag">Interface Responsiva</span>
             </div>
           </div>
           <div class="proj-side">
             <span class="proj-year">2026</span>
-            <a href="https://order-system2.netlify.app/" class="proj-link" target="_blank" rel="noopener">abrir ↗</a>
+            <a href="https://order-system2.netlify.app/" class="proj-link" target="_blank" rel="noopener noreferrer">Abrir projeto</a>
           </div>
         </div>
 
         <div class="project-row reveal reveal-delay-3">
-          <div class="proj-num">04</div>
           <div class="proj-body">
             <div class="proj-title-row">
               <span class="proj-title">🏦 Nébula Bank — Internet Banking</span>
-              <span class="proj-badge">💳 destaque</span>
+              <span class="proj-badge">destaque</span>
             </div>
             <p class="proj-desc">
               Simulação completa de internet banking, com login, dashboard de saldo, extrato,
@@ -260,29 +182,28 @@
             </p>
             <div class="proj-tags">
               <span class="ptag">HTML5</span>
-              <span class="ptag gold">CSS3</span>
-              <span class="ptag blue">JavaScript</span>
-              <span class="ptag green">Pix Simulado</span>
-              <span class="ptag gold">Dashboard Financeiro</span>
-              <span class="ptag blue">Cartões e Limites</span>
-              <span class="ptag green">Simulador de Empréstimos</span>
+              <span class="ptag">CSS3</span>
+              <span class="ptag">JavaScript</span>
+              <span class="ptag">Pix Simulado</span>
+              <span class="ptag">Dashboard Financeiro</span>
+              <span class="ptag">Cartões e Limites</span>
+              <span class="ptag">Simulador de Empréstimos</span>
               <span class="ptag">LocalStorage</span>
-              <span class="ptag gold">Modo Claro/Escuro</span>
-              <span class="ptag blue">Interface Responsiva</span>
+              <span class="ptag">Modo Claro/Escuro</span>
+              <span class="ptag">Interface Responsiva</span>
             </div>
           </div>
           <div class="proj-side">
             <span class="proj-year">2026</span>
-            <a href="https://internet-banking1.netlify.app/" class="proj-link" target="_blank" rel="noopener">abrir ↗</a>
+            <a href="https://internet-banking1.netlify.app/" class="proj-link" target="_blank" rel="noopener noreferrer">Abrir projeto</a>
           </div>
         </div>
 
         <div class="project-row empty reveal reveal-delay-3">
-          <div class="proj-num">05</div>
           <div class="proj-body">
             <div class="proj-title-row">
               <span class="proj-title">Próximo Projeto</span>
-              <span class="proj-badge" style="border-color:rgba(90,112,128,0.3); color:var(--muted); background:transparent;">em andamento</span>
+              <span class="proj-badge">em andamento</span>
             </div>
             <p class="proj-desc">
               Em desenvolvimento. Novos projetos surgindo no SENAI e em iniciativas pessoais.
@@ -300,133 +221,49 @@
     </div>
   </section>
 
-  <section id="habilidades">
-    <div class="section-wrap">
-      <div class="section-header">
-        <div class="section-index">[ 03 ]</div>
-        <h2 class="section-title">minhas <em>skills</em></h2>
+  <section id="habilidades" class="panel">
+    <div class="wrap">
+      <h2 class="section-title">Skills e tecnologias</h2>
+      <p class="section-sub">Tecnologias que uso nos meus projetos e no dia a dia</p>
+      <div class="skills-grid">
+      <div class="sk-card reveal reveal-delay-0"><img src="https://skillicons.dev/icons?i=html" width="34" height="34" alt="" loading="lazy"><div><b>HTML</b><small>Semântica · Estrutura</small></div></div>
+      <div class="sk-card reveal reveal-delay-1"><img src="https://skillicons.dev/icons?i=css" width="34" height="34" alt="" loading="lazy"><div><b>CSS</b><small>Animações · Layout</small></div></div>
+      <div class="sk-card reveal reveal-delay-2"><img src="https://skillicons.dev/icons?i=js" width="34" height="34" alt="" loading="lazy"><div><b>JavaScript</b><small>DOM · Eventos</small></div></div>
+      <div class="sk-card reveal reveal-delay-3"><img src="https://skillicons.dev/icons?i=react" width="34" height="34" alt="" loading="lazy"><div><b>React</b><small>Componentes · Interfaces</small></div></div>
+      <div class="sk-card reveal reveal-delay-0"><img src="https://skillicons.dev/icons?i=git" width="34" height="34" alt="" loading="lazy"><div><b>Git</b><small>Controle de versão</small></div></div>
+      <div class="sk-card reveal reveal-delay-1"><img src="https://skillicons.dev/icons?i=github" width="34" height="34" alt="" loading="lazy"><div><b>GitHub</b><small>Repositórios</small></div></div>
+      <div class="sk-card reveal reveal-delay-2"><span class="sk-glyph" aria-hidden="true">{ }</span><div><b>Lógica</b><small>Algoritmos · Raciocínio</small></div></div>
+      <div class="sk-card reveal reveal-delay-3"><img src="https://skillicons.dev/icons?i=Aa" width="34" height="34" alt="" loading="lazy"><div><b>UI Design</b><small>Tipografia · Composição</small></div></div>
       </div>
-
-      <table class="skills-table">
-        <tbody>
-          <tr class="reveal">
-            <td class="sk-name">HTML</td>
-            <td class="sk-cat">Semântica · Estrutura</td>
-            <td style="width:100%">
-              <div class="sk-bar-wrap">
-                <div class="sk-bar" data-width="0.82"></div>
-              </div>
-            </td>
-            <td class="sk-pct">82%</td>
-          </tr>
-          <tr class="reveal reveal-delay-1">
-            <td class="sk-name">CSS</td>
-            <td class="sk-cat">Animações · Layout</td>
-            <td style="width:100%">
-              <div class="sk-bar-wrap">
-                <div class="sk-bar" data-width="0.80"></div>
-              </div>
-            </td>
-            <td class="sk-pct">80%</td>
-          </tr>
-          <tr class="reveal reveal-delay-2">
-            <td class="sk-name">JavaScript</td>
-            <td class="sk-cat">DOM · Eventos</td>
-            <td style="width:100%">
-              <div class="sk-bar-wrap">
-                <div class="sk-bar" data-width="0.60"></div>
-              </div>
-            </td>
-            <td class="sk-pct">60%</td>
-          </tr>
-          <tr class="reveal reveal-delay-3">
-            <td class="sk-name">Lógica</td>
-            <td class="sk-cat">Algoritmos · Raciocínio</td>
-            <td style="width:100%">
-              <div class="sk-bar-wrap">
-                <div class="sk-bar" data-width="0.70"></div>
-              </div>
-            </td>
-            <td class="sk-pct">70%</td>
-          </tr>
-          <tr class="reveal">
-            <td class="sk-name">UI Design</td>
-            <td class="sk-cat">Tipografia · Composição</td>
-            <td style="width:100%">
-              <div class="sk-bar-wrap">
-                <div class="sk-bar" data-width="0.75"></div>
-              </div>
-            </td>
-            <td class="sk-pct">75%</td>
-          </tr>
-          <tr class="reveal reveal-delay-1">
-            <td class="sk-name">Dev Tools</td>
-            <td class="sk-cat">DevTools · Git básico</td>
-            <td style="width:100%">
-              <div class="sk-bar-wrap">
-                <div class="sk-bar" data-width="0.55"></div>
-              </div>
-            </td>
-            <td class="sk-pct">55%</td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </section>
 
-  <section id="contato">
-    <div class="section-wrap">
-      <div class="section-header">
-        <div class="section-index">[ 04 ]</div>
-        <h2 class="section-title">fale <em>comigo</em></h2>
-      </div>
-      <div class="contact-grid">
-        <p class="contact-intro reveal">
-          Estou sempre aberto a novos desafios, projetos e oportunidades de colaboração.
-           e desenvolvimento, ficarei feliz em trocar experiências. <strong>Entre em contato</strong> e responderei o mais breve possível.</strong>
-
-        </p>
-        <div class="contact-list reveal reveal-delay-1">
-          <a href="mailto:isabelantonio3003@gmail.com" class="contact-item">
-            <div class="ci-left">
-              <span class="ci-type">email</span>
-              <span class="ci-label">isabelantonio3003@gmail.com</span>
-            </div>
-            <span class="ci-arrow">→</span>
-          </a>
-          <a href="https://github.com/AntonioMarcos3006" target="_blank" class="contact-item">
-            <div class="ci-left">
-              <span class="ci-type">github</span>
-              <span class="ci-label">AntonioMarcos3006</span>
-            </div>
-            <span class="ci-arrow">→</span>
-          </a>
-          <a href="https://linkedin.com/in/antonio-marques" target="_blank" class="contact-item">
-            <div class="ci-left">
-              <span class="ci-type">linkedin</span>
-              <span class="ci-label">linkedin.com/in/antonio-marques</span>
-            </div>
-            <span class="ci-arrow">→</span>
-          </a>
-          <a href="https://wa.me/554898000737" target="_blank" class="contact-item">
-            <div class="ci-left">
-              <span class="ci-type">whatsapp</span>
-              <span class="ci-label">+55 (48) 9800-0737</span>
-            </div>
-            <span class="ci-arrow">→</span>
-          </a>
+  <section id="contato" class="panel">
+    <div class="wrap">
+      <h2 class="section-title grad">Fale comigo</h2>
+      <p class="contact-intro reveal">Estou sempre aberto a novos desafios, projetos e colaborações. Se quiser conversar sobre tecnologia e desenvolvimento, <strong>entre em contato</strong> e responderei o mais breve possível.</p>
+      <div class="contact-box reveal reveal-delay-1">
+        <div class="contact-col">
+          <h3>Contato direto</h3>
+          <a class="ci" href="mailto:isabelantonio3003@gmail.com"><small>E-mail</small><span>isabelantonio3003@gmail.com</span></a>
+          <a class="ci" href="https://wa.me/554898000737" target="_blank" rel="noopener noreferrer"><small>WhatsApp</small><span>+55 (48) 9800-0737</span></a>
+        </div>
+        <div class="contact-col">
+          <h3>Redes</h3>
+          <a class="ci" href="https://github.com/AntonioMarcos3006" target="_blank" rel="noopener noreferrer"><small>GitHub</small><span>AntonioMarcos3006</span></a>
+          <a class="ci" href="https://linkedin.com/in/antonio-marques" target="_blank" rel="noopener noreferrer"><small>LinkedIn</small><span>linkedin.com/in/antonio-marques</span></a>
         </div>
       </div>
+      <div class="contact-cta"><a class="btn btn-primary" href="mailto:isabelantonio3003@gmail.com">Enviar e-mail</a></div>
     </div>
   </section>
 
   <footer>
-    <span class="f-left">© 2026 Antonio Marcos</span>
-    <span class="f-center">antonio-marcos</span>
-    <span class="f-right">Florianópolis · SC · Brasil</span>
+    <a href="#" class="f-logo grad" aria-label="Voltar ao topo">AM</a>
+    <ul class="f-links"><li><a href="#sobre">Sobre</a></li><li><a href="#projetos">Projetos</a></li><li><a href="#habilidades">Skills</a></li><li><a href="#contato">Contato</a></li></ul>
+    <span>© 2026 Antonio Marques · Florianópolis, SC</span>
   </footer>
 
-      
   <div id="custom-overlay" aria-hidden="true"></div>
 
   <div id="cp-toast" role="status" aria-live="polite"></div>
@@ -483,13 +320,14 @@
     <div class="cp-section">
       <div class="cp-label">Cor Principal</div>
       <div class="cp-colors">
+        <div class="cp-swatch" data-color="#e6b877" title="Dourado" style="background:#e6b877;" tabindex="0" role="button" aria-label="Cor dourada"></div>
         <div class="cp-swatch" data-color="#00bfff" title="Azul" style="background:#00bfff;" tabindex="0" role="button" aria-label="Cor azul"></div>
         <div class="cp-swatch" data-color="#1D9E75" title="Verde" style="background:#1D9E75;" tabindex="0" role="button" aria-label="Cor verde"></div>
         <div class="cp-swatch" data-color="#E24B4A" title="Vermelho" style="background:#E24B4A;" tabindex="0" role="button" aria-label="Cor vermelha"></div>
         <div class="cp-swatch" data-color="#7F77DD" title="Roxo" style="background:#7F77DD;" tabindex="0" role="button" aria-label="Cor roxa"></div>
         <div class="cp-swatch" data-color="#EF9F27" title="Laranja" style="background:#EF9F27;" tabindex="0" role="button" aria-label="Cor laranja"></div>
         <div class="cp-swatch cp-swatch-custom" title="Personalizado" tabindex="0" role="button" aria-label="Cor personalizada">
-          <input type="color" id="cp-color-picker" value="#00bfff" aria-label="Escolher cor personalizada">
+          <input type="color" id="cp-color-picker" value="#e6b877" aria-label="Escolher cor personalizada">
         </div>
       </div>
     </div>
@@ -499,7 +337,7 @@
       <div class="cp-fonts">
         <button class="cp-font-btn" data-font="Space Grotesk" data-font-fallback="sans-serif">
           <span class="fn-name" style="font-family:'Space Grotesk',sans-serif">Space Grotesk</span>
-          <span class="fn-sample" style="font-family:'Space Grotesk',sans-serif">Padrão · Técnico</span>
+          <span class="fn-sample" style="font-family:'Space Grotesk',sans-serif">Técnico · Compacto</span>
         </button>
         <button class="cp-font-btn" data-font="Inter" data-font-fallback="sans-serif">
           <span class="fn-name" style="font-family:'Inter',sans-serif">Inter</span>
@@ -507,7 +345,7 @@
         </button>
         <button class="cp-font-btn" data-font="Poppins" data-font-fallback="sans-serif">
           <span class="fn-name" style="font-family:'Poppins',sans-serif">Poppins</span>
-          <span class="fn-sample" style="font-family:'Poppins',sans-serif">Geométrico · Suave</span>
+          <span class="fn-sample" style="font-family:'Poppins',sans-serif">Padrão · Geométrico</span>
         </button>
         <button class="cp-font-btn" data-font="Roboto" data-font-fallback="sans-serif">
           <span class="fn-name" style="font-family:'Roboto',sans-serif">Roboto</span>
